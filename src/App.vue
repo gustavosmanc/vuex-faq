@@ -1,26 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="app">
+    <Faq />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Faq from '@/components/Faq/Main';
 export default {
-  name: "App",
-  components: {
-    HelloWorld
-  }
+  components: { Faq },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.app {
+  display: grid;
+  grid-template-columns: 305px;
+  grid-template-rows: 29.839rem;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  background: #f5f6f8;
 }
 </style>

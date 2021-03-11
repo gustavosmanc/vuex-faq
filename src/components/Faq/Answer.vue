@@ -3,7 +3,7 @@
     <div class="header">
       <BtnLeftArrow @go-back="goBack" />
       <div class="header-text">
-        <p>Basecamp é gratuito?</p>
+        <p>{{ $getQuestion }}</p>
       </div>
     </div>
     <p class="answer" v-html="$getAnswer"></p>
@@ -29,6 +29,19 @@ export default {
     },
   },
   computed: {
+    $getQuestion() {
+      const categoryId = this.$store.getters.$getComponent.categoryId;
+      const questionId = this.$store.getters.$getComponent.questionId;
+
+      const questions = this.$store.getters.$getAllCategories.find(
+        category => category.id === categoryId,
+      ).questions;
+
+      const question = questions.find(question => question.id === questionId)
+        .title;
+
+      return question;
+    },
     $getAnswer() {
       const categoryId = this.$store.getters.$getComponent.categoryId;
       const questionId = this.$store.getters.$getComponent.questionId;
@@ -50,7 +63,7 @@ export default {
 .header {
   padding: 0 1.25rem 1.875rem 1.25rem;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   grid-gap: 1rem;
   align-items: center;
 }
